@@ -21,6 +21,10 @@ module MerchandiceProductSdk
     end
     # Retrieves product collection
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page number to retrieve from the paged collection.
+    # @option opts [String] :q_url_eq Filters the collection for exact matches on product URL.
+    # @option opts [String] :q_name_cont Filters the collection for partial matches on product name.
+    # @option opts [String] :q_style_id_eq Filters the collection for exact matches on product style ID.
     # @return [Array<ProductResponse>]
     def api_products_get(opts = {})
       data, _status_code, _headers = api_products_get_with_http_info(opts)
@@ -29,6 +33,10 @@ module MerchandiceProductSdk
 
     # Retrieves product collection
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page number to retrieve from the paged collection.
+    # @option opts [String] :q_url_eq Filters the collection for exact matches on product URL.
+    # @option opts [String] :q_name_cont Filters the collection for partial matches on product name.
+    # @option opts [String] :q_style_id_eq Filters the collection for exact matches on product style ID.
     # @return [Array<(Array<ProductResponse>, Integer, Hash)>] Array<ProductResponse> data, response status code and response headers
     def api_products_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -39,6 +47,10 @@ module MerchandiceProductSdk
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'q[url_eq]'] = opts[:'q_url_eq'] if !opts[:'q_url_eq'].nil?
+      query_params[:'q[name_cont]'] = opts[:'q_name_cont'] if !opts[:'q_name_cont'].nil?
+      query_params[:'q[style_id_eq]'] = opts[:'q_style_id_eq'] if !opts[:'q_style_id_eq'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

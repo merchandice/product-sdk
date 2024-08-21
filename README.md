@@ -66,19 +66,25 @@ MerchandiceProductSdk.configure do |config|
   # Configure OAuth2 access token for authorization: oauth
   config.access_token = 'YOUR ACCESS TOKEN'
   # Configure a proc to get access tokens in lieu of the static access_token configuration
-  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' }
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 
   # Configure OAuth2 access token for authorization: oauth
   config.access_token = 'YOUR ACCESS TOKEN'
   # Configure a proc to get access tokens in lieu of the static access_token configuration
-  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' }
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
 api_instance = MerchandiceProductSdk::ProductsApi.new
+opts = {
+  page: 56, # Integer | The page number to retrieve from the paged collection.
+  q_url_eq: 'q_url_eq_example', # String | Filters the collection for exact matches on product URL.
+  q_name_cont: 'q_name_cont_example', # String | Filters the collection for partial matches on product name.
+  q_style_id_eq: 'q_style_id_eq_example' # String | Filters the collection for exact matches on product style ID.
+}
 
 begin
   #Retrieves product collection
-  result = api_instance.api_products_get
+  result = api_instance.api_products_get(opts)
   p result
 rescue MerchandiceProductSdk::ApiError => e
   puts "Exception when calling ProductsApi->api_products_get: #{e}"
@@ -90,44 +96,49 @@ end
 
 All URIs are relative to *https://merchandice.io*
 
-| Class                                | Method                                                                 | HTTP request                 | Description                  |
-| ------------------------------------ | ---------------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| _MerchandiceProductSdk::ProductsApi_ | [**api_products_get**](docs/ProductsApi.md#api_products_get)           | **GET** /api/products        | Retrieves product collection |
-| _MerchandiceProductSdk::ProductsApi_ | [**api_products_id_get**](docs/ProductsApi.md#api_products_id_get)     | **GET** /api/products/{id}   | Retrieves product            |
-| _MerchandiceProductSdk::ProductsApi_ | [**api_products_id_patch**](docs/ProductsApi.md#api_products_id_patch) | **PATCH** /api/products/{id} | Updates an existing product  |
-| _MerchandiceProductSdk::ProductsApi_ | [**api_products_id_put**](docs/ProductsApi.md#api_products_id_put)     | **PUT** /api/products/{id}   | Replaces an existing product |
-| _MerchandiceProductSdk::ProductsApi_ | [**api_products_post**](docs/ProductsApi.md#api_products_post)         | **POST** /api/products       | Create new product           |
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*MerchandiceProductSdk::ProductsApi* | [**api_products_get**](docs/ProductsApi.md#api_products_get) | **GET** /api/products | Retrieves product collection
+*MerchandiceProductSdk::ProductsApi* | [**api_products_id_get**](docs/ProductsApi.md#api_products_id_get) | **GET** /api/products/{id} | Retrieves product
+*MerchandiceProductSdk::ProductsApi* | [**api_products_id_patch**](docs/ProductsApi.md#api_products_id_patch) | **PATCH** /api/products/{id} | Updates an existing product
+*MerchandiceProductSdk::ProductsApi* | [**api_products_id_put**](docs/ProductsApi.md#api_products_id_put) | **PUT** /api/products/{id} | Replaces an existing product
+*MerchandiceProductSdk::ProductsApi* | [**api_products_post**](docs/ProductsApi.md#api_products_post) | **POST** /api/products | Create new product
+
 
 ## Documentation for Models
 
-- [MerchandiceProductSdk::ApiProductsIdPatchRequest](docs/ApiProductsIdPatchRequest.md)
-- [MerchandiceProductSdk::JSONPatchInner](docs/JSONPatchInner.md)
-- [MerchandiceProductSdk::PatchOperation](docs/PatchOperation.md)
-- [MerchandiceProductSdk::Product](docs/Product.md)
-- [MerchandiceProductSdk::ProductAttribute](docs/ProductAttribute.md)
-- [MerchandiceProductSdk::ProductPrice](docs/ProductPrice.md)
-- [MerchandiceProductSdk::ProductRating](docs/ProductRating.md)
-- [MerchandiceProductSdk::ProductResponse](docs/ProductResponse.md)
-- [MerchandiceProductSdk::ProductVariation](docs/ProductVariation.md)
+ - [MerchandiceProductSdk::ApiProductsIdPatchRequest](docs/ApiProductsIdPatchRequest.md)
+ - [MerchandiceProductSdk::JSONPatchInner](docs/JSONPatchInner.md)
+ - [MerchandiceProductSdk::PatchOperation](docs/PatchOperation.md)
+ - [MerchandiceProductSdk::Product](docs/Product.md)
+ - [MerchandiceProductSdk::ProductAttribute](docs/ProductAttribute.md)
+ - [MerchandiceProductSdk::ProductPrice](docs/ProductPrice.md)
+ - [MerchandiceProductSdk::ProductRating](docs/ProductRating.md)
+ - [MerchandiceProductSdk::ProductResponse](docs/ProductResponse.md)
+ - [MerchandiceProductSdk::ProductVariation](docs/ProductVariation.md)
+
 
 ## Documentation for Authorization
 
-Authentication schemes defined for the API:
 
+Authentication schemes defined for the API:
 ### oauth
+
 
 - **Type**: OAuth
 - **Flow**: password
-- **Authorization URL**:
-- **Scopes**:
+- **Authorization URL**: 
+- **Scopes**: 
   - read: Allows reading data from the API.
   - write: Allows writing data to the API.
 
 ### oauth
 
+
 - **Type**: OAuth
 - **Flow**: application
-- **Authorization URL**:
-- **Scopes**:
+- **Authorization URL**: 
+- **Scopes**: 
   - read: Allows reading data from the API.
   - write: Allows writing data to the API.
+

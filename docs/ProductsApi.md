@@ -13,7 +13,7 @@ All URIs are relative to *https://merchandice.io*
 
 ## api_products_get
 
-> <Array<ProductResponse>> api_products_get
+> <Array<ProductResponse>> api_products_get(opts)
 
 Retrieves product collection
 
@@ -32,10 +32,16 @@ MerchandiceProductSdk.configure do |config|
 end
 
 api_instance = MerchandiceProductSdk::ProductsApi.new
+opts = {
+  page: 56, # Integer | The page number to retrieve from the paged collection.
+  q_url_eq: 'q_url_eq_example', # String | Filters the collection for exact matches on product URL.
+  q_name_cont: 'q_name_cont_example', # String | Filters the collection for partial matches on product name.
+  q_style_id_eq: 'q_style_id_eq_example' # String | Filters the collection for exact matches on product style ID.
+}
 
 begin
   # Retrieves product collection
-  result = api_instance.api_products_get
+  result = api_instance.api_products_get(opts)
   p result
 rescue MerchandiceProductSdk::ApiError => e
   puts "Error when calling ProductsApi->api_products_get: #{e}"
@@ -46,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<ProductResponse>>, Integer, Hash)> api_products_get_with_http_info
+> <Array(<Array<ProductResponse>>, Integer, Hash)> api_products_get_with_http_info(opts)
 
 ```ruby
 begin
   # Retrieves product collection
-  data, status_code, headers = api_instance.api_products_get_with_http_info
+  data, status_code, headers = api_instance.api_products_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<ProductResponse>>
@@ -62,7 +68,12 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **page** | **Integer** | The page number to retrieve from the paged collection. | [optional] |
+| **q_url_eq** | **String** | Filters the collection for exact matches on product URL. | [optional] |
+| **q_name_cont** | **String** | Filters the collection for partial matches on product name. | [optional] |
+| **q_style_id_eq** | **String** | Filters the collection for exact matches on product style ID. | [optional] |
 
 ### Return type
 
